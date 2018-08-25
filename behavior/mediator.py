@@ -84,21 +84,11 @@ med = WindowMediator()
 med.add_windows(main_win, setting_win, help_win, about_win)
 
 print('--- Пример независимого показа окна (MainWindow)')
-main_win.show()  # Show MainWindow
-
+main_win.show()
 print('--- Теперь показ через Медиатор:')
 print('- MainWindow (остальные окна скрываются Медиатором)')
 med.show(main_win)
-# Hide SettingWindow
-# Hide HelpWindow
-# Show MainWindow
 print('- SettingWindow (остальные окна скрываются Медиатором)')
 med.show(setting_win)
-# Hide MainWindow
-# Hide HelpWindow
-# Show SettingWindow
 print('- HelpWindow (остальные окна скрываются Медиатором)')
 med.show(help_win)
-# Hide MainWindow
-# Hide SettingWindow
-# Show HelpWindow
