@@ -43,17 +43,28 @@ class HelpWindow(WindowBase):
 
 
 class WindowMediator(object):
+    """
+    Набор окон, из которых видимо всегда только одно
+    """
     def __init__(self):
         self.windows = list()
 
     def show(self, win):
+        """
+        Показывает окно, предварительно скрывая остальные
+        """
         for window in self.windows:
             if window is not win:
                 window.hide()
         win.show()
 
-    def add_window(self, window):
-        self.windows.append(window)
+    def add_windows(self, *windows):
+        """
+        Добавляет любое окно, если оно наследник от WindowBase
+        """
+        for window in windows:
+            if isinstance(window, WindowBase):
+                self.windows.append(window)
 
 
 main_win = MainWindow()
@@ -61,9 +72,7 @@ setting_win = SettingWindow()
 help_win = HelpWindow()
 
 med = WindowMediator()
-med.add_window(main_win)
-med.add_window(setting_win)
-med.add_window(help_win)
+med.add_windows(main_win, setting_win, help_win)
 
 print('--- Пример независимого показа окна (MainWindow)')
 main_win.show()  # Show MainWindow
