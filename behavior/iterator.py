@@ -80,5 +80,5 @@ class Iterator(IteratorBase):
 
 
 it = Iterator(['one', 'two', 'three', 'four', 'five'])
-print [it.prev() for i in range(5)]  # ['five', 'four', 'three', 'two', 'one']
-print [it.next() for i in range(5)]  # ['two', 'three', 'four', 'five', 'one']
+print([it.prev() for i in range(5)])  # ['five', 'four', 'three', 'two', 'one']
+print([it.next() for i in range(5)])  # ['two', 'three', 'four', 'five', 'one']

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Команда (Command, Action, Transaction) - паттерн поведения объектов.
 
@@ -11,10 +9,10 @@
 
 class Light(object):
     def turn_on(self):
-        print 'Включить свет'
+        print('Включить свет')
 
     def turn_off(self):
-        print 'Выключить свет'
+        print('Выключить свет')
 
 
 class CommandBase(object):

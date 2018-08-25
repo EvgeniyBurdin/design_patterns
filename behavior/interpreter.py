@@ -1,4 +1,3 @@
-# coding: utf-8
 
 """
 Интерпретатор (Interpreter) - паттерн поведения классов.
@@ -42,17 +41,17 @@ class RomanNumeralInterpreter(object):
             raise ValueError('Ошибочное значение: %s' % text)
         result = 0  # Но сейчас обошлись без переменной temp...
         for i in range(len(n)):  # ... и без изменения списка
-            if i == 0 or n[i - 1] >= n[i]:
+            if i == 0 or n[i-1] >= n[i]:
                 result += n[i]
             else:
-                result += (n[i] - n[i - 1] * 2)
+                result += (n[i] - n[i-1] * 2)
         return result
 
 
 interp = RomanNumeralInterpreter()
 print("Вариант 1")
-print interp.interpret('MMMCMXCIX') == 3999  # True
-print interp.interpret('MCMLXXXVIII') == 1988  # True
+print(interp.interpret('MMMCMXCIX') == 3999)  # True
+print(interp.interpret('MCMLXXXVIII') == 1988)  # True
 print("Вариант 2")
-print interp.interpret2('MMMCMXCIX') == 3999  # True
-print interp.interpret2('MCMLXXXVIII') == 1988  # True
+print(interp.interpret2('MMMCMXCIX') == 3999)  # True
+print(interp.interpret2('MCMLXXXVIII') == 1988)  # True
