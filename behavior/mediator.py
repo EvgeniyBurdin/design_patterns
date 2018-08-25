@@ -42,6 +42,14 @@ class HelpWindow(WindowBase):
         print('Hide HelpWindow')
 
 
+class AboutWindow(WindowBase):
+    def show(self):
+        print('Show AboutWindow')
+
+    def hide(self):
+        print('Hide AboutWindow')
+
+
 class WindowMediator(object):
     """
     Набор окон, из которых видимо всегда только одно
@@ -49,14 +57,14 @@ class WindowMediator(object):
     def __init__(self):
         self.windows = list()
 
-    def show(self, win):
+    def show(self, window_for_showing):
         """
         Показывает окно, предварительно скрывая остальные
         """
         for window in self.windows:
-            if window is not win:
+            if window is not window_for_showing:
                 window.hide()
-        win.show()
+        window_for_showing.show()
 
     def add_windows(self, *windows):
         """
@@ -70,9 +78,10 @@ class WindowMediator(object):
 main_win = MainWindow()
 setting_win = SettingWindow()
 help_win = HelpWindow()
+about_win = AboutWindow()
 
 med = WindowMediator()
-med.add_windows(main_win, setting_win, help_win)
+med.add_windows(main_win, setting_win, help_win, about_win)
 
 print('--- Пример независимого показа окна (MainWindow)')
 main_win.show()  # Show MainWindow
