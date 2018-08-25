@@ -44,22 +44,16 @@ class HelpWindow(WindowBase):
 
 class WindowMediator(object):
     def __init__(self):
-        self.windows = dict.fromkeys(['main', 'setting', 'help'])
+        self.windows = list()
 
     def show(self, win):
-        for window in self.windows.values():
+        for window in self.windows:
             if window is not win:
                 window.hide()
         win.show()
 
-    def set_main(self, win):
-        self.windows['main'] = win
-
-    def set_setting(self, win):
-        self.windows['setting'] = win
-
-    def set_help(self, win):
-        self.windows['help'] = win
+    def add_window(self, window):
+        self.windows.append(window)
 
 
 main_win = MainWindow()
@@ -67,22 +61,25 @@ setting_win = SettingWindow()
 help_win = HelpWindow()
 
 med = WindowMediator()
-med.set_main(main_win)
-med.set_setting(setting_win)
-med.set_help(help_win)
-print('---')
+med.add_window(main_win)
+med.add_window(setting_win)
+med.add_window(help_win)
+
+print('--- Пример независимого показа окна (MainWindow)')
 main_win.show()  # Show MainWindow
-print('---')
+
+print('--- Теперь показ через Медиатор:')
+print('- MainWindow (остальные окна скрываются Медиатором)')
 med.show(main_win)
 # Hide SettingWindow
 # Hide HelpWindow
 # Show MainWindow
-print('---')
+print('- SettingWindow (остальные окна скрываются Медиатором)')
 med.show(setting_win)
 # Hide MainWindow
 # Hide HelpWindow
 # Show SettingWindow
-print('---')
+print('- HelpWindow (остальные окна скрываются Медиатором)')
 med.show(help_win)
 # Hide MainWindow
 # Hide SettingWindow
