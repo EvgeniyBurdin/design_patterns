@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Цепочка обязанностей (Chain of Responsibility) - паттерн поведения объектов.
 
@@ -40,10 +38,10 @@ class Client(object):
         for h in self._handlers:
             msg = h.handle(code)
             if msg:
-                print 'Ответ на код %s: %s' % (code, msg)
+                print('Ответ на код %s: %s' % (code, msg))
                 break
         else:
-            print 'Код %s не обработан' % code
+            print('Код %s не обработан' % code)
 
 
 client = Client()
