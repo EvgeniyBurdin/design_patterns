@@ -1,11 +1,10 @@
-# coding: utf-8
-
 """
-Наблюдатель (Observer, Dependents, Publish-Subscribe) - паттерн поведения объектов.
+Наблюдатель (Observer, Dependents, Publish-Subscribe) - паттерн поведения
+объектов.
 
 Определяет зависимость типа "один ко многим" между объектами таким образом,
-что при изменении состояния одного объекта все зависящие от него оповещаются об этом
-и автоматически обновляются.
+что при изменении состояния одного объекта все зависящие от него оповещаются
+об этом и автоматически обновляются.
 """
 
 
@@ -30,12 +29,12 @@ class Subject(object):
 
     def set_data(self, data):
         self._data = data
-        self.notify(data)
+        self.notify()
 
-    def notify(self, data):
+    def notify(self):
         # уведомить всех наблюдателей о событии
         for observer in self._observers:
-            observer.update(data)
+            observer.update(self.get_data())
 
 
 class ObserverBase(object):
@@ -50,12 +49,14 @@ class Observer(ObserverBase):
         self._name = name
 
     def update(self, data):
-        print '%s: %s' % (self._name, data)
+        print('%s: %s' % (self._name, data))
 
 
 subject = Subject()
 subject.attach(Observer('Наблюдатель 1'))
 subject.attach(Observer('Наблюдатель 2'))
+subject.attach(Observer('Наблюдатель 3'))
 subject.set_data('данные для наблюдателя')
-# Наблюдатель 2: данные для наблюдателя
 # Наблюдатель 1: данные для наблюдателя
+# Наблюдатель 2: данные для наблюдателя
+# Наблюдатель 3: данные для наблюдателя
