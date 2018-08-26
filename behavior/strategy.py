@@ -1,10 +1,10 @@
-# coding: utf-8
-
 """
 Стратегия (Strategy) - паттерн поведения объектов.
 
-Определяет семейство алгоритмов, инкапсулирует каждый из них и делает их взаимозаменяемыми.
-Стратегия позволяет изменять алгоритмы независимо от клиентов, которые ими пользуются.
+Определяет семейство алгоритмов, инкапсулирует каждый из них и делает их
+взаимозаменяемыми.
+Стратегия позволяет изменять алгоритмы независимо от клиентов, которые ими
+пользуются.
 """
 
 
@@ -17,19 +17,19 @@ class ImageDecoder(object):
 class PNGImageDecoder(ImageDecoder):
     @staticmethod
     def decode(filename):
-        print 'PNG decode'
+        print('PNG decode')
 
 
 class JPEGImageDecoder(ImageDecoder):
     @staticmethod
     def decode(filename):
-        print 'JPEG decode'
+        print('JPEG decode')
 
 
 class GIFImageDecoder(ImageDecoder):
     @staticmethod
     def decode(filename):
-        print 'GIF decode'
+        print('GIF decode')
 
 
 class Image(object):
