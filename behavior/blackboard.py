@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """
 @author: Eugene Duboviy <eugene.dubovoy@gmail.com> | github.com/duboviy
 
@@ -69,7 +66,8 @@ class Student(AbstractExpert):
     def contribute(self):
         self.blackboard.common_state['problems'] += random.randint(1, 10)
         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
-        self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+        self.blackboard.common_state['contributions'] += \
+            [self.__class__.__name__]
         self.blackboard.common_state['progress'] += random.randint(1, 2)
 
 
@@ -82,7 +80,8 @@ class Scientist(AbstractExpert):
     def contribute(self):
         self.blackboard.common_state['problems'] += random.randint(10, 20)
         self.blackboard.common_state['suggestions'] += random.randint(10, 20)
-        self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+        self.blackboard.common_state['contributions'] += \
+            [self.__class__.__name__]
         self.blackboard.common_state['progress'] += random.randint(10, 30)
 
 
@@ -90,12 +89,14 @@ class Professor(AbstractExpert):
 
     @property
     def is_eager_to_contribute(self):
-        return True if self.blackboard.common_state['problems'] > 100 else False
+        r = True if self.blackboard.common_state['problems'] > 100 else False
+        return r
 
     def contribute(self):
         self.blackboard.common_state['problems'] += random.randint(1, 2)
         self.blackboard.common_state['suggestions'] += random.randint(10, 20)
-        self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+        self.blackboard.common_state['contributions'] += \
+            [self.__class__.__name__]
         self.blackboard.common_state['progress'] += random.randint(10, 100)
 
 
@@ -112,7 +113,7 @@ if __name__ == '__main__':
     from pprint import pprint
     pprint(contributions)
 
-### OUTPUT ###
+# ## OUTPUT ## #
 # ['Student',
 #  'Student',
 #  'Scientist',
